@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music Tuner - Playlists</title>
+  <link rel="stylesheet" href="style2.css">
+  <link rel="stylesheet" href="style-playlist.css">
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg></div>
+    <h2>Music <span>Tuner</span></h2>
+  </div>
+  <div class="sidebar-nav">
+    <p class="nav-label">Menu</p>
+    <ul>
+      <li><a href="main.html"><span class="icon"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></span> Home</a></li>
+      <li><a href="Home.html"><span class="icon"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></span> Search</a></li>
+    </ul>
+    <div class="sidebar-divider"></div>
+    <p class="nav-label">Your Collection</p>
+    <ul>
+      <li><a href="library.html"><span class="icon"><svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9h-4v4h-2v-4H9V9h4V5h2v4h4v2z"/></svg></span> Library</a></li>
+      <li class="active"><a href="playlist.html"><span class="icon"><svg viewBox="0 0 24 24"><path d="M15 6H3v2h12V6zm0 4H3v2h12v-2zM3 16h8v-2H3v2zM17 6v8.18c-.31-.11-.65-.18-1-.18-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3V8h3V6h-5z"/></svg></span> Playlists</a></li>
+    </ul>
+  </div>
+  <div class="sidebar-footer">
+    <div class="now-playing-label">Now Playing</div>
+    <div class="now-playing-info">
+      <div class="equalizer">
+        <div class="eq-bar"></div>
+        <div class="eq-bar"></div>
+        <div class="eq-bar"></div>
+        <div class="eq-bar"></div>
+      </div>
+      <span class="now-playing-text" id="nowPlayingText">Nothing playing</span>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+  <h1 class="one">Playlists</h1>
+  <p>Curate your own vibe</p>
+
+  <button class="create-playlist-btn" onclick="openModal()">
+    <span class="plus-icon">+</span> Create Playlist
+  </button>
+
+  
+  <h2 class="section-title">Your Playlists</h2>
+  <div class="playlists-grid" id="playlistsGrid">
+
+
+    <div class="playlist-card" onclick="playPlaylist('tamil')">
+      <div class="playlist-cover">
+        <img src="Ani.webp" alt="">
+        <img src="D.webp" alt="">
+        <img src="strr.webp" alt="">
+        <img src="sai.webp" alt="">
+      </div>
+      <div class="playlist-name">Tamil Hits</div>
+      <div class="playlist-meta">4 songs • Tamil Pop</div>
+      <button class="playlist-play" onclick="event.stopPropagation(); playPlaylist('tamil')">▶</button>
+    </div>
+
+  
+    <div class="playlist-card" onclick="playPlaylist('chill')">
+      <div class="playlist-cover">
+        <img src="shr.webp" alt="">
+        <img src="GV.webp" alt="">
+        <img src="spb.webp" alt="">
+        <img src="u1.webp" alt="">
+      </div>
+      <div class="playlist-name">Chill Vibes</div>
+      <div class="playlist-meta">4 songs • Melody & Classical</div>
+      <button class="playlist-play" onclick="event.stopPropagation(); playPlaylist('chill')">▶</button>
+    </div>
+
+ 
+    <div class="playlist-card" onclick="playPlaylist('energy')">
+      <div class="playlist-cover">
+        <img src="hip.webp" alt="">
+        <img src="Vij.webp" alt="">
+        <img src="ant.webp" alt="">
+        <img src="D.webp" alt="">
+      </div>
+      <div class="playlist-name">Energy Boost</div>
+      <div class="playlist-meta">4 songs • High Energy</div>
+      <button class="playlist-play" onclick="event.stopPropagation(); playPlaylist('energy')">▶</button>
+    </div>
+
+   
+    <div class="playlist-card" onclick="playPlaylist('classic')">
+      <div class="playlist-cover">
+        <img src="spb.webp" alt="">
+        <img src="AR.webp" alt="">
+        <img src="shr.webp" alt="">
+        <img src="kar.webp" alt="">
+      </div>
+      <div class="playlist-name">Golden Classics</div>
+      <div class="playlist-meta">4 songs • Classical</div>
+      <button class="playlist-play" onclick="event.stopPropagation(); playPlaylist('classic')">▶</button>
+    </div>
+
+  </div>
+
+  
+  <h2 class="section-title">Suggested Songs to Add</h2>
+  <ul class="suggested-list" id="suggestedList"></ul>
+
+</div>
+
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <h3>Create New Playlist</h3>
+    <input type="text" id="playlistNameInput" placeholder="Playlist name...">
+    <input type="text" id="playlistDescInput" placeholder="Description (optional)">
+    <div class="modal-actions">
+      <button class="modal-cancel" onclick="closeModal()">Cancel</button>
+      <button class="modal-create" onclick="createPlaylist()">Create</button>
+    </div>
+  </div>
+</div>
+
+<div class="player">
+  <button onclick="prev()">⏮</button>
+  <button id="playBtn" onclick="togglePlay()">▶</button>
+  <button onclick="next()">⏭</button>
+</div>
+
+<audio id="audio"></audio>
+
+<script>
+const audio = document.getElementById("audio");
+const playBtn = document.getElementById("playBtn");
+const nowPlayingText = document.getElementById("nowPlayingText");
+
+const allSongs = [
+  { name: "Anirudh Hits",    file: "anis.mp3",     img: "Ani.webp",     type: "Tamil Pop" },
+  { name: "Andriya Vibes",   file: "ants.mp3",     img: "an.webp",      type: "Romantic" },
+  { name: "Dhanush Boost",   file: "ds.mp3",       img: "D.webp",       type: "High Energy" },
+  { name: "GV Hits",         file: "gvs.mp3",      img: "GV.webp",      type: "Melody" },
+  { name: "Hip Hop Hits",    file: "hips.mp3",     img: "hip.webp",     type: "Hip Hop" },
+  { name: "Shreya Ghoshal",  file: "shrs.mp3",     img: "shr.webp",     type: "Classical" },
+  { name: "Shruti Haasan",   file: "shruthis.mp3", img: "shruthi.webp", type: "Romantic" },
+  { name: "SPB Days",        file: "spbs.mp3",     img: "spb.webp",     type: "Classical" },
+  { name: "STR Mix",         file: "strrs.mp3",    img: "strr.webp",    type: "Tamil Pop" },
+  { name: "Vijay Blast",     file: "vijs.mp3",     img: "Vij.webp",     type: "High Energy" },
+  { name: "U1 Drugs",        file: "u1s.mp3",      img: "u1.webp",      type: "Melody" },
+  { name: "Karthik Hits",    file: "kars.mp3",     img: "kar.webp",     type: "Melody" },
+  { name: "Antony Blast",    file: "ants.mp3",     img: "ant.webp",     type: "High Energy" },
+  { name: "Sai Latest Hits", file: "sais.mp3",     img: "sai.webp",     type: "Tamil Pop" },
+  { name: "AR Hits",         file: "ars.mp3",      img: "AR.webp",      type: "Classical" }
+];
+
+const playlists = {
+  tamil:   [0, 2, 8, 13],
+  chill:   [5, 3, 7, 10],
+  energy:  [4, 9, 12, 2],
+  classic: [7, 14, 5, 11]
+};
+
+let currentPlaylist = [];
+let currentIndex = -1;
+
+
+const suggestedList = document.getElementById("suggestedList");
+suggestedList.innerHTML = allSongs.map((song, i) => `
+  <li class="suggested-item" onclick="playSingleSong(${i})">
+    <span class="suggested-num">${i + 1}</span>
+    <img class="suggested-thumb" src="${song.img}" alt="${song.name}">
+    <div class="suggested-info">
+      <div class="suggested-name">${song.name}</div>
+      <div class="suggested-artist">${song.type}</div>
+    </div>
+    <button class="suggested-add" onclick="event.stopPropagation(); alert('Added to playlist!')">+ Add</button>
+  </li>
+`).join("");
+
+function playPlaylist(name) {
+  const indices = playlists[name];
+  if (!indices || indices.length === 0) return;
+  currentPlaylist = indices.map(i => allSongs[i]);
+  currentIndex = 0;
+  playCurrentSong();
+}
+
+function playSingleSong(index) {
+  currentPlaylist = [allSongs[index]];
+  currentIndex = 0;
+  playCurrentSong();
+}
+
+function playCurrentSong() {
+  const song = currentPlaylist[currentIndex];
+  audio.src = song.file;
+  audio.play();
+  playBtn.textContent = "⏸";
+  nowPlayingText.textContent = song.name;
+}
+
+function togglePlay() {
+  if (currentPlaylist.length === 0) return;
+  if (audio.paused) {
+    audio.play();
+    playBtn.textContent = "⏸";
+  } else {
+    audio.pause();
+    playBtn.textContent = "▶";
+  }
+}
+
+function next() {
+  if (currentPlaylist.length === 0) return;
+  currentIndex = (currentIndex + 1) % currentPlaylist.length;
+  playCurrentSong();
+}
+
+function prev() {
+  if (currentPlaylist.length === 0) return;
+  currentIndex = (currentIndex - 1 + currentPlaylist.length) % currentPlaylist.length;
+  playCurrentSong();
+}
+
+audio.addEventListener("ended", function() {
+  next();
+});
+
+
+function openModal() {
+  document.getElementById("modalOverlay").classList.add("show");
+  document.getElementById("playlistNameInput").focus();
+}
+
+function closeModal() {
+  document.getElementById("modalOverlay").classList.remove("show");
+  document.getElementById("playlistNameInput").value = "";
+  document.getElementById("playlistDescInput").value = "";
+}
+
+function createPlaylist() {
+  const name = document.getElementById("playlistNameInput").value.trim();
+  if (!name) {
+    alert("Please enter a playlist name");
+    return;
+  }
+
+  const grid = document.getElementById("playlistsGrid");
+  const card = document.createElement("div");
+  card.className = "playlist-card";
+  card.innerHTML = `
+    <div class="playlist-cover single">
+      <img src="img1.jpg" alt="">
+    </div>
+    <div class="playlist-name">${name}</div>
+    <div class="playlist-meta">0 songs • New</div>
+    <button class="playlist-play">▶</button>
+  `;
+  grid.appendChild(card);
+
+  closeModal();
+  alert(`Playlist "${name}" created!`);
+}
+
+
+document.getElementById("modalOverlay").addEventListener("click", function(e) {
+  if (e.target === this) closeModal();
+});
+</script>
+
+</body>
+</html>
